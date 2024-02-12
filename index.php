@@ -9,7 +9,7 @@
 </head>
 <body>
 <?php
-$conn = new PDO('pgsql:host=localhost port=5432 dbname=test user=root password=1');
+$conn = new PDO('pgsql:host=localhost;port=5432;dbname=student;user=student;password=101010');
 if($conn)
     echo 'connected';
 else

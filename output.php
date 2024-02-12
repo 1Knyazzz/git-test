@@ -6,13 +6,17 @@
 
 
 echo "<h1>output</h1>";
+
+$repo = new FeedbackRepository(new DbConnection());
+$repo->insert();
 # пагинация
 $page =isset($_GET['page']) ? $_GET['page'] : 1;
 $limit = 5;
 $offset = $limit * ($page-1);
+
 $total_page = pagen($conn, $limit);
 # запрос данных
-$result = query_out($conn, $limit, $offset)
+$result = queryOut($conn, $limit, $offset)
 ?>
 <div class='container'>
     <div class="row">
@@ -38,7 +42,7 @@ $result = query_out($conn, $limit, $offset)
         <?php foreach($result as $out): ?>
         <div id="myCarousel" class="col-md-20" data-ride="carousel">
             <ul class="list-group col-sm-20">
-                <li lass="list-group-item active">
+                <li class="list-group-item">
                     <h4><?=$out['username']?> <?=$out['password']?> <?=$out['email']?> <?=$out['number']?> <?=$out['description']?></h4>
                     <br>
                 </li>
